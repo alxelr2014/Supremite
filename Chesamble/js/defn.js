@@ -1,4 +1,4 @@
-const BOEARD_SIZE = 64;
+const BOARD_SIZE = 64;
 const RANK = {rank1:0, rank2: 1, rank3:2, rank4:3, rank5:4, rank6:5, rank7:6, rank8:7};
 const FILE = {fileA:0, fileB: 1, fileC:2, fileD:3, fileE:4, fileF:5, fileG:6, fileH:7};
 const COLOUR = {white :0 , black : 1};
@@ -17,7 +17,7 @@ class Position{
     isValid() {
         if(this.file < 0 || this.file >= 8)
             return false;
-        if(this.rank < 0 || this.file >= 8)
+        if(this.rank < 0 || this.rank >= 8)
             return false;
         return true;
     }
@@ -55,8 +55,12 @@ class Game{
     turn;
     constructor()
     {
-        this.board = new Array<Piece>(BOEARD_SIZE);
-        this.moves = new Array<Move>(0);
+        this.board = new Array();
+        for(let i = 0 ; i < BOARD_SIZE ; i++)
+        {
+            this.board.push(new Piece(PIECES.empty,-1));
+        }
+        this.moves = new Array();
         this.turn = COLOUR.white;
     }
 

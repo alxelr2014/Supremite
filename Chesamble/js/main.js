@@ -18,11 +18,7 @@ function initGameBoard()
 	{
 		game.board[positionToIndex(new Position(i,RANK.rank2))] = new Piece(PIECES.pawn, COLOUR.white);
 	}
-	for(let j = RANK.rank3; j <= RANK.rank6; j++)
-		for(let i = FILE.fileA ; i <=FILE.fileH;i++)
-	{
-		game.board[positionToIndex(new Position(i,j))] = new Piece(PIECES.empty, -1);
-	}
+
 	for(let i = FILE.fileA ; i <=FILE.fileH;i++)
 	{
 		game.board[positionToIndex(new Position(i,RANK.rank7))] = new Piece(PIECES.pawn, COLOUR.black);
@@ -35,12 +31,7 @@ function initGameBoard()
 	game.board[positionToIndex(new Position(FILE.fileF,RANK.rank8))] = new Piece(PIECES.bishop,COLOUR.black);
 	game.board[positionToIndex(new Position(FILE.fileG,RANK.rank8))] = new Piece(PIECES.knight,COLOUR.black);
 	game.board[positionToIndex(new Position(FILE.fileH,RANK.rank8))] = new Piece(PIECES.rock,COLOUR.black);
-	    if (typeof game.board[0] === "undefined") {
-        alert("something is prtty undefined");
-    }
-	else{
-		console.log("fuck");
-	}
+
 	return game;
 }
 
@@ -74,5 +65,5 @@ function init(){
     console.log("init called.");
 	let game = initGameBoard();
     initGUIBoardSquares();
-	//setGameBoardPieces(game);
+	setGameBoardPieces(game);
 }

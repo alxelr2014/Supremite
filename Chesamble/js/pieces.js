@@ -34,7 +34,7 @@ function notCheck(game , position, colour)
 function pawnMoves(game, index)
 {
     let position = indexToPosition(index);
-    let moves= new Array<Move>(0);
+    let moves= new Array0;
     if(position.isValid())
             return moves;
         let forward = (game.board[index].colour == COLOUR.white) ? 1 : -1;
@@ -85,7 +85,7 @@ function pawnMoves(game, index)
 
 function knightMoves(game, index){
     let position = indexToPosition(index);
-    let moves= new Array<Move>(0);
+    let moves= new Array0;
     if(position.isValid())
     {
         let dir = [-1,1];
@@ -110,7 +110,7 @@ function knightMoves(game, index){
 function bishopMoves(game, index)
 {
     let position = indexToPosition(index);
-    let moves= new Array<Move>(0);
+    let moves= new Array0;
     if(position.isValid())
     {
         let dir = [-1,1];
@@ -140,7 +140,7 @@ function bishopMoves(game, index)
 function rockMoves(game, index)
 {
     let position = indexToPosition(index);
-    let moves= new Array<Move>(0);
+    let moves= new Array0;
     if(position.isValid())
     {
         let dir = [-1,1];
@@ -171,7 +171,7 @@ function rockMoves(game, index)
 function queenMoves(game, index)
 {
     let position = indexToPosition(index);
-    let moves= new Array<Move>(0);
+    let moves= new Array0;
     if(position.isValid())
     {
         moves.concat(rockMoves(game,index));
@@ -183,7 +183,7 @@ function queenMoves(game, index)
 function kingMoves(game, index)
 {
     let position = indexToPosition(index);
-    let moves= new Array<Move>(0);
+    let moves= new Array0;
     if(position.isValid())
     {
         for(let rank = -1; rank < 2 ; rank++)
@@ -257,6 +257,6 @@ function possible_moves(game ,index )
     {
         return knightMoves(game,index);
     }
-        return new  Array<Move>(0);
+        return new  Array0;
 
 }
