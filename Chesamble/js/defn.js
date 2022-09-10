@@ -21,6 +21,13 @@ class Position{
             return false;
         return true;
     }
+    isEqual(other_position){
+        return (this.file == other_position.file) && (this.rank == other_position.rank);
+    }
+    print()
+    {
+        return "(file: " + this.file + ", rank: "+ this.rank + ")";
+    }
 }
 
 class Piece{
@@ -31,6 +38,14 @@ class Piece{
         this.type = type;
         this.colour = colour;
         this.has_moved = false;
+    }
+    isEqual(other_piece)
+    {
+        return (this.type == other_piece.type )&& (this.colour == other_piece.colour )&& (this.has_moved == other_piece.has_moved);
+    }
+    print()
+    {
+        return "(type: " + this.type + ", colour: " +  this.colour + ", has_moved: "+ this.has_moved + ")";
     }
 }
 
@@ -48,20 +63,13 @@ class Move{
         this.takes = takes;
         this.takes_position = takes_position;
     }
-}
-class Game{
-    board;
-    moves;
-    turn;
-    constructor()
-    {
-        this.board = new Array();
-        for(let i = 0 ; i < BOARD_SIZE ; i++)
-        {
-            this.board.push(new Piece(PIECES.empty,-1));
-        }
-        this.moves = new Array();
-        this.turn = COLOUR.white;
+    isEqual(other_move){
+        return this.piece.isEqual(other_move.piece) && this.src.isEqual(other_move.src) && this.dest.isEqual(other_move.dest);
     }
-
+    print()
+    {
+        return "(piece: " + this.piece.print() +", src: " + this.src.print() + ", dest: "+ this.dest.print() + 
+        ", takes: "+ this.takes.print() + ", takes_position: "+ this.takes_position.print()+ ")";
+    }
 }
+
