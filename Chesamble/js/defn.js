@@ -53,15 +53,11 @@ class Move{
     piece;
     src ;
     dest;
-    takes;
-    takes_position ;
-    constructor(piece,src,dest,takes,takes_position)
+    constructor(piece,src,dest)
     {
         this.piece = piece;
         this.src = src;
         this.dest = dest;
-        this.takes = takes;
-        this.takes_position = takes_position;
     }
     isEqual(other_move){
         return this.piece.isEqual(other_move.piece) && this.src.isEqual(other_move.src) && this.dest.isEqual(other_move.dest);
@@ -72,4 +68,38 @@ class Move{
         ", takes: "+ this.takes.print() + ", takes_position: "+ this.takes_position.print()+ ")";
     }
 }
+class BasicMove extends Move{
+    constructor(piece,src,dest)
+    {
+        super(piece,src,dest);
+    }
+}
+class CaptureMove extends Move{
+    taken;
+    taken_position;
+    constructor(piece,src,dest, taken, taken_position){
+        super(piece,src,dest);
+        this.taken = taken;
+        this.taken_position = taken_position;
+    }
+}
+class CastleMove extends Move{
+    rock_piece;
+    rock_src;
+    rock_dest;
+    constructor(piece,src,dest,rock_piece,rock_src,rock_dest)
+    {
+        super(piece,src,dest);
+        this.rock_piece = rock_piece;
+        this.rock_src = rock_src;
+        this.rock_dest = rock_dest;
+    }
+}
 
+class PromoteMove extends Move{
+    promote_piece;
+    constructor(piece,src,dest,promote_piece){
+        super(piece,src,dest);
+        this.promote_piece = promote_piece;
+    }
+}
