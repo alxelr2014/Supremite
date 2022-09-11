@@ -78,7 +78,7 @@ class Game {
   }
   
 
-  possibleMoves(index) {
+  possibleMoves(index,check_filter) {
     let next_moves = new Array();
     if (this.board[index].colour == this.turn) {
       if (this.board[index].type == PIECES.pawn) {
@@ -94,7 +94,8 @@ class Game {
       } else if (this.board[index].type == PIECES.king) {
         next_moves = kingMoves(this, index);
       }
-      next_moves = next_moves.filter((element) => !isChecked(index,element));
+      if(check_filter)
+        next_moves = next_moves.filter((element) => !isChecked(this, element,this.board[index].colour));
     }
     return next_moves;
   }
@@ -102,7 +103,7 @@ class Game {
 
   makeMove(move) {
     let piece_index = positionToIndex(move.src);
-    let possible_moves = this.possibleMoves(piece_index);
+    let possible_moves = this.possibleMoves(piece_index,true);
     possible_moves = possible_moves.filter(function (value) {
       return value.isEqual(move);
     });
@@ -114,26 +115,6 @@ class Game {
   }
 
   moveProcessing(move){
-    let src_index = positionToIndex(move.src);
-    let dest_index = positionToIndex(move.dest);
-    let taken_index = positionToIndex(move.takes_position);
-    if(move.takes.type == PIECES.empty)
-    {
-      this.board[dest_index] = new Piece(move.piece.type,move.piece.colour);
-      this.board[dest_index].has_moved = true;
-      this.board[src_index] = new Piece(PIECES.empty,-1);
-    }
-    else if(move.takes.type == -1) 
-    {
-      
-    }
-    else{
-      this.takens[this.board[taken_index].colour].push(this.board[taken_index]);
-      this.board[dest_index].has_moved = true;
-      this.board[taken_index] = new Piece(PIECES.empty,-1);
-      this.board[dest_index] = new Piece(move.piece.type,move.piece.colour);
-      this.board[dest_index].has_moved = true;
-      this.board[src_index] = new Piece(PIECES.empty,-1);
-    }
+    moveDo(move,this.board,this.takens);
   }
 }

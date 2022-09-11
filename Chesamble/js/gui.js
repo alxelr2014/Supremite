@@ -108,7 +108,7 @@ function clickedPiece(position){
 	else if(game.board[index].colour == game.turn)
 	{
 		exclusiveAddClass(isFileRankEqual(position.file,position.rank),"SquareSelected");
-		user_action_state.possibleMoves = game.possibleMoves(index);
+		user_action_state.possibleMoves = game.possibleMoves(index,true);
 		exclusiveAddClass(isNextMove(user_action_state.possibleMoves),"SquareNextMove");
 	}
 }
