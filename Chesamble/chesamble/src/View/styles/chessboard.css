@@ -1,0 +1,132 @@
+:root {
+  --piece_paths: "../../assets/pieces/";
+  --piece_size: 75px;
+}
+
+
+#Board{
+    display: grid;
+    grid-template-columns: repeat(8,100px);
+    grid-template-rows: repeat(8,100px);
+    width : 800px;
+    height : 800px;
+}
+
+.Square {
+    width: 100px;
+    height: 100px;
+  }
+  .Square.dark{
+    background-color:#17b365;
+  }
+  
+  .Square.light{
+    background-color:#dcfaeb;
+  }
+  
+  .Square.selected{
+    background-color: #4fdb70;
+  }
+
+  .PieceTile{
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+  }
+  .PieceTile.wP{
+     background-image: url("../../assets/pieces/wP.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.wR{
+    background-image: url("../../assets/pieces/wR.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.wN{
+    background-image: url("../../assets/pieces/wN.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.wB{
+    background-image: url("../../assets/pieces/wB.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.wQ{
+    background-image: url("../../assets/pieces/wQ.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.wK{
+    background-image: url("../../assets/pieces/wK.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.bP{
+    background-image: url("../../assets/pieces/bP.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.bR{
+    background-image: url("../../assets/pieces/bR.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.bN{
+    background-image: url("../../assets/pieces/bN.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.bB{
+    background-image: url("../../assets/pieces/bB.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.bQ{
+    background-image: url("../../assets/pieces/bQ.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
+  .PieceTile.bK{
+    background-image: url("../../assets/pieces/bK.png");
+    height : var(--piece_size);
+    width: var(--piece_size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: var(--piece_size);
+  }
