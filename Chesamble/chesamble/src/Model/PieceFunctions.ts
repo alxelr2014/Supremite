@@ -224,10 +224,11 @@ export function kingMoves(game : Game, index : number) {
             for (let i = kingside_rock_index - 1; (i > index) && kingside_castle; i--) {
                 kingside_castle = kingside_castle && game.board[i].type === PIECES.empty;
             }
-            for (let i = index; (i <= positionToIndex(kingside_king_dest)) && kingside_castle; i++) {
+            for (let i = index + 1; (i <= positionToIndex(kingside_king_dest)) && kingside_castle; i++) {
                 kingside_castle = kingside_castle && !isChecked(game,
                     new BasicMove(game.board[index], position, indexToPosition(i)), game.board[index].colour);
             }
+            kingside_castle = kingside_castle && !isCheckCondition(game,game.board[index].colour);
 
             if (kingside_castle) {
                 moves.push(new CastleMove(game.board[index], position, kingside_king_dest, game.board[kingside_rock_index], kingside_rock_position, kingside_rock_dest));
@@ -245,10 +246,12 @@ export function kingMoves(game : Game, index : number) {
             for (let i = queenside_rock_index + 1; (i < index) && queenside_castle; i++) {
                 queenside_castle = queenside_castle && game.board[i].type === PIECES.empty;
             }
-            for (let i = index; (i >= positionToIndex(queenside_king_dest)) && queenside_castle; i--) {
+            for (let i = index - 1; (i >= positionToIndex(queenside_king_dest)) && queenside_castle; i--) {
                 queenside_castle = queenside_castle && !isChecked(game,
                     new BasicMove(game.board[index], position, indexToPosition(i)), game.board[index].colour);
             }
+            queenside_castle = queenside_castle && !isCheckCondition(game,game.board[index].colour);
+
 
             if (queenside_castle) {
                 moves.push(new CastleMove(game.board[index], position, queenside_king_dest, game.board[queenside_rock_index], queenside_rock_position, queenside_rock_dest));
@@ -288,6 +291,7 @@ export function moveDo(move : Move, board : Array<Piece>, takens : Array<Array<P
     else {
         console.log("Move's instance is not recognized!");
     }
+    console.log("DO: " , board);
 }
 export function moveUndo(move : Move, board : Array<Piece>, takens : Array<Array<Piece>>) {
     let src_index = positionToIndex(move.src);
@@ -324,6 +328,7 @@ export function moveUndo(move : Move, board : Array<Piece>, takens : Array<Array
     else {
         console.log("Move's instance is not recognized!");
     }
+    console.log("UNDO: " , board);
 }
 
 export function isCheckCondition(game :Game, colour : number) {

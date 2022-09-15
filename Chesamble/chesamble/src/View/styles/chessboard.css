@@ -1,20 +1,23 @@
 :root {
   --piece_paths: "../../assets/pieces/";
-  --piece_size: 75px;
+  --piece_size: 60px;
+  --tile_size : 60px;
+  --board_size : 480px;
 }
 
 
 #Board{
     display: grid;
-    grid-template-columns: repeat(8,100px);
-    grid-template-rows: repeat(8,100px);
-    width : 800px;
-    height : 800px;
+    grid-template-columns: repeat(8,var(--tile_size));
+    grid-template-rows: repeat(8,var(--tile_size));
+    width : var(--board_size);
+    height : var(--board_size);
+
 }
 
 .Square {
-    width: 100px;
-    height: 100px;
+    width: var(--tile_size);
+    height: var(--tile_size);
   }
   .Square.dark{
     background-color:#17b365;
@@ -29,8 +32,8 @@
   }
 
   .PieceTile{
-    width: 100px;
-    height: 100px;
+    width: var(--tile_size);
+    height: var(--tile_size);
     display: grid;
     place-items: center;
   }
